@@ -1,16 +1,19 @@
-import React from 'react';
-import { Grid, Row, Col, ControlLabel, FormControl, FormGroup, Button } from "react-bootstrap";
+import React, { Component } from 'react';
+import { Grid, Row, Col, ControlLabel, Button } from "react-bootstrap";
+import FieldGroup from "./base/fieldGroup";
 
-const SearchBar = () => {
-  function FieldGroup({ id, label, help, ...props }) {
-    return (
-      <FormGroup controlId={id}>
-          <FormControl {...props} />
-      </FormGroup>
-    );
+class SearchBar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: "",
+      tag: ""
+    }
   }
 
-  return (
+  render() {
+    return (
       <Grid>
           <form>
             <Row className="show-grid">
@@ -24,18 +27,16 @@ const SearchBar = () => {
             <Row className="show-grid">
                 <Col sm={6} md={3}>
                     <FieldGroup
-                        id="formControlsName"
-                        type="name"
-                        label="blog name"
-                        placeholder="Enter email"
+                        id="formControlName"
+                        placeholder="Enter blog name"
+                        onChange={event => this.setState({ name: event.target.value })}
                     />
                 </Col>
                 <Col sm={6} md={3}>
                     <FieldGroup
-                        id="formControlsName"
-                        type="name"
-                        label="blog name"
-                        placeholder="Enter email"
+                        id="formControlTag"
+                        placeholder="Enter a tag"
+                        onChange={event => this.setState({ tag: event.target.value })}
                     />
                 </Col>
             </Row>
@@ -43,14 +44,15 @@ const SearchBar = () => {
                 <Col sm={6} md={3}>
                 </Col>
                 <Col sm={6} md={3}>
-                    <Button type="submit">
+                    <Button type="submit" onClick={ ()=>console.log(this.state)}>
                         Submit
                     </Button>
                 </Col>
             </Row>
           </form>
       </Grid>
-  );
+  )
 };
+}
 
 export default SearchBar;
