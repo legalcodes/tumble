@@ -5,6 +5,8 @@ var env = require('node-env-file');
 var router = express.Router();
 var routes = require('./server/routes/index');
 
+//const API_KEY = 'PBqHiwj1I0gtTrSEvL6BYjX8YbSMzFtAraiHoY7attGmdBR6AR';
+
 var app = express();
 var port = process.env.PORT;
 var static_path = __dirname + "/build";

@@ -2,44 +2,28 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 
+//const API_KEY = 'PBqHiwj1I0gtTrSEvL6BYjX8YbSMzFtAraiHoY7attGmdBR6AR';
+
 function handleError(err, done, res) {
 	done();
 	console.log(err);
 	return res.status(500).json({success: false, data: err});
 };
 
-// router.get('/api/v1/expungems', function(req, res){
+router.get('/api/v1/getblog', function(req, res){
+	const results = [];
+  // make axios call to tumblr
+  console.log("ENDPOINT CODE HAS RUN");
 
-// 		var results = [];
+  const post = "/posts";
+  const user = "/peacecorps";
+  const suffix = ".tumblr.com";
+  const apiPrefix = "?api_key=";
+  //const tag = "";
+  //const transformURI = () => {};
+  //const uri = `/v2/blog${user}${suffix}${post}${apiPrefix}${API_KEY}`;
+  res.send("Why, hello there!");
 
-// 		// Get Postgres client from connection pool
-// 		pg.connect(connectionString, function(err, client, done){
-// 			if(err) {return handleError(err, done, res);}
-
-// 				// SQL Query > Select Data
-// 				var query = client.query("SELECT * FROM events ORDER BY id ASC");
-
-// 				// Stream results back one row at a time
-// 				query.on('row', function(row) {
-// 						results.push(row);
-// 				});
-
-// 				// After all data is returned, close connection and return results
-// 				query.on('end', function() {
-// 						done();
-// 						return res.json(results);
-// 				});
-// 		});
-// });
-
-// CREATE
-
-
-// UPDATE
-
-
-// DESTROY
-
-
+});
 
 module.exports = router;
